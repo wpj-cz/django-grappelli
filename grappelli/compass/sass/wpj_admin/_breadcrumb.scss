@@ -1,0 +1,33 @@
+/*  WPJ ADMIN BREADCRUMB
+------------------------------------------------------------------------------------------------------ */
+
+#grp-context-navigation {
+   background: $wpj-default-color;
+   height: 46px;
+   border-bottom: 1px solid $wpj-warning-color;
+   padding-left: 10px;
+   nav {
+      &#grp-breadcrumbs {
+         > ul {
+            padding: 14px 20px;
+            li {
+               color: $wpj-info-color;
+               padding-right: 30px;
+               a {
+                  padding-right: 0;
+                  background-image: none;
+                  @include link($wpj-primary-color, $wpj-primary-color, false, false);
+                  &:after {
+                     // fa fa-angle-right
+                     content: '\f105';
+                     font-family: FontAwesome;
+                     color: $wpj-menu-color;
+                     position: absolute;
+                     margin-left: 14px;
+                  }
+               }
+            }
+         }
+      }
+   }
+}

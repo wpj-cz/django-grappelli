@@ -1,0 +1,43 @@
+/*  WPJ ADMIN CONTENT
+------------------------------------------------------------------------------------------------------ */
+
+#wpj-admin-content {
+   flex: 1;
+   position: relative;
+
+   //xs sm md
+   @media (max-width: $wpj-lg - 1) {
+      @include calc('width', '100% - #{map_get($wpj-menu-width, md)}');
+      left: map_get($wpj-menu-width, md);
+   }
+
+   //lg xl
+   @media (min-width: $wpj-lg) {
+      @include calc('width', '100% - #{map_get($wpj-menu-width, lg)}');
+      left: map_get($wpj-menu-width, lg);
+   }
+}
+
+article {
+   //xs sm md
+   @media (max-width: $wpj-lg - 1) {
+      &#grp-content {
+         position: relative;
+         top: 0;
+         padding: 110px 30px 127px;
+         flex: 1;
+         @include calc('width', '100% - #{map_get($wpj-menu-width, md)}');
+      }
+   }
+
+   //lg xl
+   @media (min-width: $wpj-lg) {
+      &#grp-content {
+         position: relative;
+         top: 0;
+         padding: 110px 30px 127px;
+         flex: 1;
+         @include calc('width', '100% - #{map_get($wpj-menu-width, lg)}');
+      }
+   }
+}

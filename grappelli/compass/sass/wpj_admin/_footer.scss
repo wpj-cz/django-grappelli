@@ -1,0 +1,21 @@
+/*  WPJ ADMIN FOOTER
+------------------------------------------------------------------------------------------------------ */
+
+footer {
+   &.grp-fixed-footer {
+      background: $wpj-warning-color;
+      padding-left: 30px;
+
+      //xs sm md
+      @media (max-width: $wpj-lg - 1) {
+         @include calc('width', '100% - #{map_get($wpj-menu-width, md)}');
+         left: map_get($wpj-menu-width, md);
+      }
+
+      //lg xl
+      @media (min-width: $wpj-lg) {
+         @include calc('width', '100% - #{map_get($wpj-menu-width, lg)}');
+         left: map_get($wpj-menu-width, lg);
+      }
+   }
+}

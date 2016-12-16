@@ -1,0 +1,191 @@
+/*  WPJ ADMIN MENU
+------------------------------------------------------------------------------------------------------ */
+
+#wpj-admin-menu {
+   position: fixed;
+   z-index: 1001;
+   flex-shrink: 0;
+   min-height: 100vh;
+   background: $wpj-primary-color;
+   color: $wpj-default-color;
+   border-top: 4px solid $wpj-success-color;
+   padding-bottom: 56px;
+   @include box-shadow(21px 0px 21px -11px transparentize($wpj-primary-color, 0.56));
+   #grp-admin-title-link {
+      height: 68px;
+      padding: 22px 0 0 42px;
+      border-bottom: 1px solid $wpj-menu-border-color;
+   }
+   #grp-navigation_admin_home {
+      svg {
+         width: 120px;
+         fill: $wpj-white-color;
+         @include transition(all $wpj-transition-effect-speed ease-in-out);
+      }
+      &:hover {
+         svg {
+            fill: $wpj-success-color;
+         }
+      }
+   }
+   ul.wpj-admin-menu-level-1 {
+      li {
+         a {
+            background: none;
+            border: none;
+            outline: none;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 56px;
+            padding-left: 30px;
+            padding-right: 30px;
+            border-bottom: 1px solid $wpj-menu-border-color;
+            @include transition(all $wpj-transition-effect-speed ease-in-out);
+            i {
+               &:first-child {
+                  font-size: 22px;
+                  flex-shrink: 0;
+                  align-items: flex-start;
+                  color: $wpj-success-color;
+               }
+               &:last-child {
+                  font-size: 10px;
+                  flex-shrink: 0;
+                  align-items: flex-end;
+                  color: $wpj-menu-color;
+                  float: right;
+                  @include transition(all $wpj-transition-effect-speed ease-in-out);
+               }
+            }
+            &:hover {
+               background: $wpj-primary-color-dark;
+            }
+         }
+         ul.wpj-admin-menu-level-2 {
+            background: $wpj-primary-color-dark;
+            li {
+               a {
+                  display: flex;
+                  align-items: center;
+                  min-height: 30px;
+                  line-height: 16px;
+                  padding-top: 7px;
+                  padding-bottom: 7px;
+                  border-bottom: none;
+                  i {
+                     font-size: 12px;
+                     color: $wpj-menu-color;
+                     width: 22px;
+                  }
+                  span {
+                     color: $wpj-menu-color;
+                     display: inline;
+                     flex-shrink: 0;
+                     border-bottom: 1px solid transparentize($wpj-menu-color, 1);
+                     @include transition(all $wpj-transition-effect-speed ease-in-out);
+                     @include truncate(130px, true);
+                  }
+                  &:hover {
+                     span {
+                        color: $wpj-menu-color;
+                        border-bottom: 1px solid transparentize($wpj-menu-color, 0);
+                     }
+                  }
+               }
+            }
+            // slide toggle up/down transition
+            box-sizing: border-box;
+            max-height: 0;
+            overflow: hidden;
+            border-bottom: 1px solid transparentize($wpj-menu-border-color, 1);
+            @include transition(all $wpj-transition-effect-speed * 2);
+            &.active {
+               max-height: 500px;
+               border-bottom: 1px solid transparentize($wpj-menu-border-color, 0);
+            }
+         }
+         &.active {
+            a {
+               background: $wpj-primary-color-dark;
+               i {
+                  &:last-child {
+                     @include rotate(180deg);
+                  }
+               }
+            }
+            ul.wpj-admin-menu-level-2 {
+               background: $wpj-primary-color-dark;
+            }
+         }
+      }
+   }
+
+   //xs sm md
+   @media (max-width: $wpj-lg - 1) {
+      width: map_get($wpj-menu-width, md);
+      ul.wpj-admin-menu-level-1 {
+         li {
+            a {
+               i {
+                  &:first-child {
+                     @include calc('width', '100% - #{20px}');
+                  }
+               }
+               > span {
+                  display: none;
+               }
+            }
+            ul.wpj-admin-menu-level-2 {
+               padding: 0;
+               &.active {
+                  padding: 10px 0 10px 0;
+               }
+            }
+         }
+      }
+   }
+
+   //lg xl
+   @media (min-width: $wpj-lg) {
+      width: map_get($wpj-menu-width, lg);
+      ul.wpj-admin-menu-level-1 {
+         li {
+            a {
+               i {
+                  &:first-child {
+                     width: 40px;
+                  }
+               }
+               > span {
+                  padding: 8px 8px 8px 0;
+                  flex: 1;
+                  font-size: 12px;
+                  color: $wpj-menu-color;
+                  @include transition(all $wpj-transition-effect-speed ease-in-out);
+               }
+            }
+            ul.wpj-admin-menu-level-2 {
+               li {
+                  a {
+                     > span {
+                        flex: none;
+                        color: $wpj-menu-color;
+                        display: inline;
+                        flex-shrink: 0;
+                        padding: 0;
+                        border-bottom: 1px solid transparentize($wpj-menu-color, 1);
+                        @include transition(all $wpj-transition-effect-speed ease-in-out);
+                        @include truncate(150px, true);
+                     }
+                  }
+               }
+               padding: 0 0 0 40px;
+               &.active {
+                  padding: 10px 0 10px 40px;
+               }
+            }
+         }
+      }
+   }
+}

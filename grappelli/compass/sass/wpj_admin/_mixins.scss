@@ -1,0 +1,86 @@
+
+
+/*  WPJ ADMIN MIXINS
+------------------------------------------------------------------------------------------------------ */
+
+// Calc value
+// ----------
+
+// Výpočet hodnoty za pomocí kombinace více různých jednotek
+// např: 100% - 20px
+//[1] - klíč, css atribut
+//[2] - hodnota
+@mixin calc($key, $value) {
+   #{$key}: -webkit-calc(#{$value});
+   #{$key}: -moz-calc(#{$value});
+   #{$key}: calc(#{$value});
+}
+
+
+// CSS string truncate
+// ----------
+
+// Zkrácení textu podle nastavené šířky kontejneru
+//[1] - šířka kontejneru
+@mixin truncate($width, $max-width: false) {
+   @if($max-width == false) {
+      width: $width;
+   } @else {
+      max-width: $width;
+   }
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+
+// Links
+// ----------
+
+// Definice hezkých odkazů s :hover efektem
+// [1] Barva odkazu
+// [2] Barva podtržeí odkazu
+// [3] Styl výchozího zobrazení odkazu
+//     $underline: TRUE    - zobrazí se podtržený odkaz, při :hover podtržení zmízí
+//     $underline: FALSE   - zobrazí se odkaz bez podtržení, při :hover se podtrhne
+// [4] Definice použití mixinu
+//     $tag: TRUE    - mixin lze použít mimo tag <a>, ten je doplněn automaticky
+//     $tag: FALSE   - mixin se musí použít uvnitř tagu <a>, tím lze možné přetížít nadefinované výchozí vlastnosti
+// [5] Link reset - reset hezkých odkazů zpět do výchozího chování
+@mixin link($color, $color-underline, $underline: true, $tag: true) {
+   @if ($tag == true) {
+      a {
+         color: $color;
+         text-decoration: none;
+         @include transition(all $wpj-transition-effect-speed ease-in-out);
+
+         @if ($underline == true) {
+            border-bottom: 1px solid transparentize($color-underline, 0);
+            &:hover {
+               border-bottom: 1px solid transparentize($color-underline, 1);
+            }
+         } @else {
+            border-bottom: 1px solid transparentize($color-underline, 1);
+            &:hover {
+               border-bottom: 1px solid transparentize($color-underline, 0);
+            }
+         }
+      }
+   } @else {
+      color: $color;
+      text-decoration: none;
+      @include transition(all $wpj-transition-effect-speed ease-in-out);
+
+      @if ($underline == true) {
+         border-bottom: 1px solid transparentize($color-underline, 0);
+         &:hover {
+            border-bottom: 1px solid transparentize($color-underline, 1);
+         }
+      } @else {
+         border-bottom: 1px solid transparentize($color-underline, 1);
+         &:hover {
+            border-bottom: 1px solid transparentize($color-underline, 0);
+         }
+      }
+   }
+}

@@ -1,0 +1,304 @@
+
+
+/*  WPJ ADMIN HEADER
+------------------------------------------------------------------------------------------------------ */
+
+header {
+   &#grp-header {
+      #grp-navigation {
+         padding: 0 0 0 10px;
+         min-height: 58px;
+         ul {
+            &#grp-user-options-left,
+            &#grp-user-tools {
+               > li {
+                  border-left: 1px solid $wpj-border-color;
+                  border-right: none;
+                  display: inline;
+                  float: left;
+                  list-style-image: none;
+                  list-style-type: none;
+                  margin-left: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  white-space: nowrap;
+                  &:first-child {
+                     border-left: none;
+                  }
+                  a,
+                  > span,
+                  &#grp-user-options-left-domain {
+                     color: $wpj-primary-color;
+                     display: block;
+                     padding: 21px;
+                     i {
+                        color: $wpj-primary-color;
+                        font-size: 20px;
+                        float: left;
+                        margin: -2px 8px 0 0;
+                        &:first-child {
+                           @include transition(all $wpj-transition-effect-speed ease-in-out);
+                        }
+                     }
+                  }
+                  a {
+                     height: 58px;
+                     i {
+                        margin: -2px 0 0 0;
+                     }
+                  }
+                  > span {
+                     color: $wpj-info-color;
+                  }
+               }
+            }
+
+            &#grp-user-options-left {
+               margin: 0;
+               float: left;
+               font-weight: bold;
+               position: relative;
+               > li {
+                  //bookmarks submenu
+                  a {
+                     display: flex;
+                     align-items: center;
+                     width: 100%;
+                     min-height: 58px;
+                     i {
+                        &:first-child {
+                           flex-shrink: 0;
+                           align-items: flex-start;
+                           float: left;
+                        }
+                        &:last-child {
+                           font-size: 14px;
+                           flex-shrink: 0;
+                           align-items: flex-end;
+                           float: right;
+                           margin-left: 10px;
+                           @include transition(all $wpj-transition-effect-speed ease-in-out);
+                        }
+                     }
+                  }
+                  //bookmarks submenu - level 2
+                  ul {
+                     position: absolute;
+                     background: $wpj-warning-color;
+                     z-index: 1002;
+                     width: 220px;
+                     li {
+                        border-top: 1px solid $wpj-border-color;
+                        a {
+                           height: 40px;
+                           min-height: inherit;
+                           padding: 0 21px;
+                           > i {
+                              width: 21px;
+                           }
+                           > span {
+                              display: inline-block;
+                              @include truncate(100%);
+                           }
+                        }
+                     }
+                     // slide toggle up/down transition
+                     max-height: 0;
+                     overflow: hidden;
+                     @include transition(all $wpj-transition-effect-speed  * 2);
+                  }
+
+                  &.active {
+                     a {
+                        i {
+                           &:last-child {
+                              @include rotate(180deg);
+                           }
+                        }
+                     }
+                     ul {
+                        max-height: 500px;
+                     }
+                  }
+               }
+            }
+            &#grp-user-tools {
+               margin: 0;
+               border-right: none;
+               border-left: none;
+               > li {
+                  border-right: none;
+               }
+            }
+         }
+         h1 {
+            &#grp-admin-title-link {
+               float: left;
+               font-size: 12px;
+               line-height: 16px;
+               margin: 0;
+               padding: 7px 0 11px;
+               position: relative;
+               a {
+                  &#grp-navigation_admin_home {
+                     width: 16px;
+                     height: 0;
+                     display: inline-block;
+                     overflow: hidden;
+                     padding-top: 15px;
+                     margin-right: 10px;
+                     top: 1px;
+                     position: relative;
+                  }
+               }
+            }
+         }
+         a {
+            @include transition(all $wpj-transition-effect-speed ease-in-out);
+            &:hover {
+               i {
+                  &:first-child {
+                     @include scale(1.15);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   // hide default admin title
+   h1 {
+      &#grp-admin-title {
+         display: none
+      }
+   }
+
+   //xs sm
+   @media(max-width: $wpj-md - 1) {
+      &#grp-header {
+         @include calc('width', '100% - #{map_get($wpj-menu-width, sm)}');
+         left: map_get($wpj-menu-width, md);
+         #grp-navigation {
+            ul {
+               &#grp-user-options-left,
+               &#grp-user-tools {
+                  > li {
+                     a {
+                        height: 58px;
+                        i {
+                           margin: -2px 0 0 0;
+                        }
+                     }
+                  }
+               }
+               &#grp-user-options-left {
+                  > li {
+                     //bookmarks submenu - level 2
+                     ul {
+                        li {
+                           a {
+                              > i {
+                                 width: 31px;
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+               li {
+                  > span {
+                     color: $wpj-info-color;
+                  }
+                  a {
+                     > span {
+                        display: none;
+                     }
+                  }
+               }
+
+            }
+         }
+      }
+   }
+
+   // md
+   @media(min-width: $wpj-md) and (max-width: $wpj-lg - 1) {
+      &#grp-header {
+         @include calc('width', '100vw - #{map_get($wpj-menu-width, md) + 17px}');
+         left: map_get($wpj-menu-width, md);
+         #grp-navigation {
+            ul {
+               &#grp-user-options-left,
+               &#grp-user-tools {
+                  > li {
+                     a {
+                        height: 58px;
+                        i {
+                           margin: -2px 0 0 0;
+                        }
+                     }
+                  }
+               }
+               &#grp-user-options-left {
+                  > li {
+                     //bookmarks submenu - level 2
+                     ul {
+                        li {
+                           a {
+                              > i {
+                                 width: 31px;
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+               li {
+                  > span {
+                     color: $wpj-info-color;
+                  }
+                  a {
+                     > span {
+                        display: none;
+                     }
+                  }
+               }
+
+            }
+         }
+      }
+   }
+
+   //lg xl
+   @media(min-width: $wpj-lg) {
+      &#grp-header {
+         @include calc('width', '100vw - #{map_get($wpj-menu-width, lg) + 17px}');
+         left: map_get($wpj-menu-width, lg);
+         #grp-navigation {
+            ul {
+               &#grp-user-options-left,
+               &#grp-user-tools {
+                  > li {
+                     a {
+                        height: 58px;
+                        i {
+                           margin: -2px 8px 0 0;
+                        }
+                     }
+                  }
+               }
+               li {
+                  > span {
+                     color: $wpj-info-color;
+                  }
+                  a {
+                     > span {
+                        display: inline-block;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

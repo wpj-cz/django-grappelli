@@ -1,0 +1,50 @@
+/*  WPJ ADMIN
+------------------------------------------------------------------------------------------------------ */
+
+/*  COLORS ............................................................ */
+$wpj-black-color: #000000;
+$wpj-white-color: #ffffff;
+$wpj-default-color: #e7ebf2;
+$wpj-default-color-dark: #bfc5d1;
+$wpj-primary-color: #262e3b;
+$wpj-primary-color-dark: #222935;
+$wpj-info-color: #6f7886;
+$wpj-success-color: #1cc09b;
+$wpj-success-color-dark: #13b18d;
+$wpj-warning-color: #d6dae1;
+$wpj-danger-color: #e53f7a;
+$wpj-danger-color-dark: #d52a67;
+$wpj-border-color: #c2c9d5;
+$wpj-menu-color: #abb7cb;
+$wpj-menu-border-color: #364050;
+
+/*  FONT ............................................................ */
+$wpj-font-family: 'Open Sans';
+
+/*  EFFECTS  ............................................................ */
+$wpj-transition-effect-speed: 0.4s;
+
+/*  GRID ............................................................ */
+$wpj-xs: 450px;
+$wpj-sm: 768px;
+$wpj-md: 992px;
+$wpj-lg: 1460px;
+$wpj-xl: 1620px;
+
+/*  MENU ............................................................ */
+$wpj-menu-width: (
+      sm: 205px,
+      md: 205px,
+      lg: 270px,
+);
+
+
+//xs sm md
+@media (max-width: $wpj-lg - 1) {
+
+}
+
+//lg xl
+@media (min-width: $wpj-lg) {
+
+}

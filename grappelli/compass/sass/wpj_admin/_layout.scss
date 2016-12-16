@@ -1,0 +1,19 @@
+
+
+/*  WPJ ADMIN LAYOUT
+------------------------------------------------------------------------------------------------------ */
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+   display: flex;
+   background: $wpj-default-color;
+   width: auto;
+   min-height: 100%;
+   flex-direction: row;
+   align-items: stretch;
+}
